@@ -4,8 +4,8 @@ const router = express.Router()
 const { upload, verifyAccess, chacheGetAllProduct, clearCache } = require('../middlewares/middlewares')
 
 router
-  .get('/:id', verifyAccess, productController.getProductById)
-  .get('/',verifyAccess, productController.getAllProduct)
+  .get('/:id', productController.getProductById)
+  .get('/', productController.getAllProduct)
   // .post('/', verifyAccess, clearCache, upload.single('image'), productController.insertProduct)
   .post('/', verifyAccess, clearCache, upload.single('file'), productController.insertProduct)
   .patch('/:id', verifyAccess, upload.single('file'), productController.updateProduct)
